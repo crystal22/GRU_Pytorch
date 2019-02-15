@@ -1,1 +1,1 @@
-# GRU_Pytorch
+# Gated Recurrent Unit (Pytorch)
