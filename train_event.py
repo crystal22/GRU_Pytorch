@@ -134,6 +134,7 @@ def train(filename_train,filename_model,n_events=60000,n_features_embedding=7,
         logging.warning("Moved model to GPU")
 
 ###########################OPTIMIZER AND LOSS ##########################################
+
     logging.info("Building optimizer...")
     optimizer = Adam(model.parameters(), lr=step_size)
     scheduler = lr_scheduler.ExponentialLR(optimizer, gamma=decay)
@@ -141,6 +142,10 @@ def train(filename_train,filename_model,n_events=60000,n_features_embedding=7,
     n_batches = int(len(X_train) // batch_size)
     best_score = [-np.inf]
     best_model_state_dict = copy.deepcopy(model.state_dict())  # intial parameters of model
+
+    def loss(y_pred, y):
+        l = log_loss(y, y_pred.squeeze(1)).mean()
+        return l
         
 ###############################VALIDATION OF DATA ########################################
     def callback(epoch, iteration, model):
