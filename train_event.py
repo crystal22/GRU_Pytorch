@@ -8,7 +8,7 @@ import time
 import os
 import click
 
-from wrapping import wrap, unwrap, wrap_X, unwrap_X
+from utils import wrap, unwrap, wrap_X, unwrap_X
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import RobustScaler
@@ -27,19 +27,19 @@ def rewrite_content(jet):
     jet = copy.deepcopy(jet)
     content = jet["content"]
     tree = jet["tree"]
-
+    
     def _rec(i):
         if tree[i, 0] == -1:
-           pass
+            pass
         else:
             _rec(tree[i, 0])
             _rec(tree[i, 1])
             c = content[tree[i, 0]] + content[tree[i, 1]]
             content[i] = c
 
-    _rec(jet["root_id"])
+_rec(jet["root_id"])
 
-    return jet
+return jet
 
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s %(levelname)s] %(message)s")
 

@@ -12,7 +12,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import RobustScaler
 from train_event import pt_order,rewrite_content,extract
-from wrapping import wrap,unwrap,wrap_X,unwrap_X
+from utils import wrap,unwrap,wrap_X,unwrap_X
 from GRU import Predict
 from GRU import log_loss
 

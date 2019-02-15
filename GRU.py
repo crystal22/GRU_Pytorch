@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from batching import batch
+from utils import batch
 import numpy as np
-from wrapping import wrap,unwrap,wrap_X,unwrap_X
+from utils import wrap,unwrap,wrap_X,unwrap_X
 
 ###########RecNN architecture for jet embedding#############
 class RecNN(nn.Module):
